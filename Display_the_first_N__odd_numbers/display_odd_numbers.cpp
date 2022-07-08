@@ -7,20 +7,21 @@
 
 //FUNCTION PROTOTYPES
 unsigned number_of_odd_values(); // this function will take the value of N and use it to determine how odd numbers should be added together
-unsigned odd_numbers();  //this function will determine if a number is odd and if so it will be added to the sum
+void print_sum_of_odd_numbers();  //this function will print out the sum of the odd numbers
 unsigned sum_of_odd_values(unsigned); //this function will compute the sum of the first N odd numbers
 
 
 //GLOBAL VARIABLE DECLERATIONS
-
-
+unsigned sum = 0;
+unsigned odd_numbers_found = 0; //this variable will keep track of the number of variables found and will help make sure we don't add more numbers than we need 
 
 //MAIN FUNCTION
 int main()
 {
     std::cout << "Give me a positive number (N) and I will give you the sum of the first (N) odd numbers: ";
-    number_of_odd_values();
-
+    unsigned total_num_of_odds = number_of_odd_values();
+    sum_of_odd_values(total_num_of_odds);
+    std::cout << "The sum the first: " << total_num_of_odds << " odd numbers is equal to: " << sum;
 
     system("pause>0");
     return 0;
@@ -37,11 +38,19 @@ unsigned number_of_odd_values()
 
 unsigned sum_of_odd_values(unsigned N)
 {
+    int i = 1;
+    while (true)
+    {
+        if (i % 2 != 0)
+        {
+            ++odd_numbers_found;
+            sum += i;
+        }   
 
+        ++i;
+        if (odd_numbers_found == N)
+            break;
+    }
+
+    return sum;
 } 
-
-unsigned odd_numbers()
-{
-    int odd_num;
-    
-}
