@@ -7,7 +7,6 @@
 
 //FUNCTION PROTOTYPES
 unsigned number_of_odd_values(); // this function will take the value of N and use it to determine how odd numbers should be added together
-void print_sum_of_odd_numbers();  //this function will print out the sum of the odd numbers
 unsigned sum_of_odd_values(unsigned); //this function will compute the sum of the first N odd numbers
 
 
