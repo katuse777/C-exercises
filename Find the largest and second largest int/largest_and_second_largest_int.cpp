@@ -9,7 +9,7 @@
 
 
 //FUNCTION PROTOTYPES
-void find_largest_and_second_largest(int);  
+void find_largest_and_second_largest(int);
 void connecting(); //this function will accept the numbers entered by the user and will call another function to process the numbers 
 
 //GLOBAL VARIABLE DECLERATIONS
@@ -39,15 +39,19 @@ void connecting()
     {
         std::cin >> list_item;
         find_largest_and_second_largest(list_item);
-        
+
     } while (list_item != 0);
-    
+
 }
 
 void find_largest_and_second_largest(int user_num)
 {
+    
     if (user_num > largest)
+    {
+        second_largest = largest;
         largest = user_num;
+    }
     else if (user_num > second_largest)
-        second_largest = user_num;    
+        second_largest = user_num;
 }
