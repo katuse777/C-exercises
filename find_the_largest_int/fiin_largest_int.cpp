@@ -51,6 +51,8 @@ int get_user_input()
     do
     {
         std::cin >> user_num;
+        if (user_num == 0)
+            break;
         maximum_number = largest_num(user_num);
 
     } while (user_num != SENTINEL);
