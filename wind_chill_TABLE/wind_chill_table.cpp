@@ -6,7 +6,7 @@
 
   35.74 + 0.6215 t – 35.75 v^0.16 + 0.4275 t v^0.16
   where t is the Fahrenheit temperature and v is the wind speed in miles per hour
-  Write a program which willdisplay a wind chill table the starts from 40 degrees Fahrenheit
+  Write a program which will display a wind chill table that starts from 40 degrees Fahrenheit
   and ends at -45 degrees Fahrenheit on the x-axis and on the y-axis should be the wind speed in miles per hour
 */
 
@@ -14,11 +14,10 @@
 #include <iostream>
 #include <cmath>
 #include <cstdlib>
+#include <iomanip>
 
 //FUNCTION PROTOTYPES
-void get_wind_speed_and_temp();
 double calculate_wind_chill(double& wind_s, double& temperature);
-void print_wind_chill(int wind_chill);
 void wind_to_the_Nth_pow(double& wind);
 void error(std::string);
 
@@ -28,7 +27,6 @@ void error(std::string);
 //MAIN FUNCTION
 int main()
 {
-    get_wind_speed_and_temp();
 
 
     system("pause>0");
@@ -36,23 +34,9 @@ int main()
 }
 
 //FUNCTION DEFINITIONS
-/*get_wind_speed_and_temp function
-  --------------------------------
-  this function will ask the user to enter the current temperature and wind speed
-  and it will call other functions to which it will pass these valuse into for
-  processing and call another function which will use that return value to print
-  the wind chill to the user
-*/
-void get_wind_speed_and_temp()
+void table_values()
 {
-    double wind_speed, temp;
-    std::cout << "Enter the temperature(degrees Fahrenheit): ";
-    std::cin >> temp;
-    std::cout << "Enter the wind speed(miles per hour): ";
-    std::cin >> wind_speed;
 
-    int wind_chill = calculate_wind_chill(wind_speed, temp);
-    print_wind_chill(wind_chill);
 }
 
 
@@ -69,16 +53,8 @@ void wind_to_the_Nth_pow(double& wind)
 
 double calculate_wind_chill(double& wind_s, double& temperature)
 {
-    if (temperature > 40.0) error("Undefined");
-    if (wind_s == 0.0) return temperature;
     wind_to_the_Nth_pow(wind_s);
     return 35.74 + (0.6215 * temperature) - (35.75 * wind_s) + (0.4275 * temperature * wind_s);
-}
-
-
-void print_wind_chill(int wind_chill)
-{
-    std::cout << "Wind Chill: " << wind_chill << " degrees Fahrenheit.";
 }
 
 void error(std::string msg)
