@@ -10,9 +10,13 @@
 
 //INCLUDE DIRECTIVES
 #include <iostream>
+#include <cmath>
 
 //FUNCTION PROTOTYPES
-
+void get_wind_speed_and_temp(); 
+double calculate_wind_chill(double & wind_s, double & temperature); 
+void print_wind_chill(double wind_chill);
+void wind_to_the_Nth_pow(double & wind);
 
 //GLOBAL VARIABLE DECLERATIONS
 
@@ -20,6 +24,7 @@
 //MAIN FUNCTION
 int main()
 {
+    get_wind_speed_and_temp();
 
 
     system("pause>0");
@@ -27,3 +32,30 @@ int main()
 }
 
 //FUNCTION DEFINITIONS
+void get_wind_speed_and_temp()
+{
+    double wind_speed, temp;
+    std::cout << "Enter the temperature: ";
+    std::cin >> temp;
+    std::cout << "Enter the wind speed: ";
+    std::cin >> wind_speed;
+
+    double wind_chill = calculate_wind_chill(wind_speed, temp);
+    print_wind_chill(wind_chill);
+}
+
+double calculate_wind_chill(double & wind_s, double & temperature)
+{
+    wind_to_the_Nth_pow(wind_s);
+    return 35.74 + (0.6215 * temperature) - (35.75 * wind_s) + (0.4275 * temperature * wind_s);
+}
+
+void wind_to_the_Nth_pow(double & wind)
+{
+    wind = pow(wind, 0.16);
+}
+
+void print_wind_chill(double wind_chill)
+{
+    std::cout << "Wind Chill: " << wind_chill;
+}
