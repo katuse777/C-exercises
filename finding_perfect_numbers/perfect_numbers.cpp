@@ -10,6 +10,7 @@
 #include <iostream>
 int sum_of_proper_divisors(int);
 bool is_perfect(int);
+void perfect_numbers_below_9999();
 
 //FUNCTION PROTOTYPES
 
@@ -18,8 +19,7 @@ bool is_perfect(int);
 //MAIN FUNCTION
 int main()
 {
-
-    std::cout << is_perfect(28);
+    perfect_numbers_below_9999();
     system("pause>0");
     return 0;
 }
@@ -49,4 +49,18 @@ int sum_of_proper_divisors(int num)
             sum_of_proper_divisors += i;    
     }
     return sum_of_proper_divisors;
+}
+
+/*perfect_numbers_below_9999()
+  ----------------------------
+  this function will loop through the number 1 to 9999 and will display any number from 
+  this range that is a perfect number
+*/
+void perfect_numbers_below_9999()
+{
+    for (int i = 1; i < 9999; i++)
+    {
+        if (is_perfect(i))
+            std::cout << i << '\n';
+    }
 }
