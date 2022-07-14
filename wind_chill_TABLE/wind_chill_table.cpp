@@ -1,64 +1,95 @@
 /*Write a function windChill that takes the values of t and v and returns the
-  wind chill. In doing so, your function should take account of two special cases:
-  • If there is no wind, windChill should return the original temperature t.
-  • If the temperature is greater than 40° F, the wind chill is undefined, and
-  your function should call error with an appropriate message.
-
+  wind chill.
+  formula for wind chill is
   35.74 + 0.6215 t – 35.75 v^0.16 + 0.4275 t v^0.16
-  where t is the Fahrenheit temperature and v is the wind speed in miles per hour
-  Write a program which will display a wind chill table that starts from 40 degrees Fahrenheit
-  and ends at -45 degrees Fahrenheit on the x-axis and on the y-axis should be the wind speed in miles per hour
+  where t is the Fahrenheit temperature and v is the wind speed in miles per hour.
 */
 
-//INCLUDE DIRECTIVES
 #include <iostream>
-#include <cmath>
-#include <cstdlib>
-#include <iomanip>
+#include <iomanip>   //conatins setw() function
+#include <cmath>    //contins pow(base, exponent) function
 
-//FUNCTION PROTOTYPES
-double calculate_wind_chill(double& wind_s, double& temperature);
-void wind_to_the_Nth_pow(double& wind);
-void error(std::string);
-
-//GLOBAL VARIABLE DECLERATIONS
+//Function prototypes
+void top_row_of_wind_chill_table();
+double wind_speed_to_the_Nth_pow(double windSpeed);
+int calulating_wind_chill(double wind_speed, double temperature);
+void print_wind_chill_table();
 
 
 //MAIN FUNCTION
 int main()
 {
-
-
-    system("pause>0");
-    return 0;
+	std::cout << std::setw(50) << "Temperature(F)\n";
+	std::cout << "calm" << std::setw(6);
+	top_row_of_wind_chill_table();
+	print_wind_chill_table();
+	system("pause>0");
+	return 0;
 }
 
-//FUNCTION DEFINITIONS
-void table_values()
+/*top_row_of_wind_chill_table()
+* -----------------------------
+* this function's job is to display the scale of the y-axis, all the values on the top row will be used as the temperature
+* values when calculating the wind chill
+*/
+void top_row_of_wind_chill_table()
 {
-
+	int i = 40;
+	while (i >= -45)
+	{
+		std::cout << i << std::setw(6);
+		i -= 5;
+	}
+	std::cout << '\n';
 }
 
+/*wind_speed_to_the_Nth_pow(double windSpeed)
+* ----------------------------------------
+* the formula for calculating wind chill requires us to multiply the wind speed by it'self
+* 0.16 times and this function will take in the wind_speed as an argument and use the pow function
+* to raise the wind speed the 0.16th power and return that value to be used in the full calculation of the wind chill
+* by the calculating_wind_chill() function
+*/
+double wind_speed_to_the_Nth_pow(double windSpeed)
+{
+	windSpeed = pow(windSpeed, 0.16);
+	return windSpeed;
+}
 
-/* wind_to_the_Nth_pow function
-   ----------------------------
-   this funtion will be used to simplify the calculation of the wind chill, specifically, it calculates
-   (v^0.16) the wind speed to the power 0.16
+/*calulating_wind_chill(double wind_speed, double temperature)
+* ------------------------------------------------------
+* formula fo wind chill: 35.74 + 0.6215 t – 35.75 v^0.16 + 0.4275 t v^0.16
+* this function will calulate the wind chill using the the wind speed and temperature it receives as arguments
+* it will call the wind_speed_to_the_Nth_pow() function to simplify raising the wind speed to the 0.16th power
+* and it will return the wind chill for that combination of wind speed and temperature
 */
 
-void wind_to_the_Nth_pow(double& wind)
+int calulating_wind_chill(double wind_speed, double temperature)
 {
-    wind = pow(wind, 0.16);
+	double wind_s = wind_speed_to_the_Nth_pow(wind_speed);
+	return 35.74 + (0.6215 * temperature) - (35.75 * wind_s) + (0.4275 * temperature * wind_s);
 }
 
-double calculate_wind_chill(double& wind_s, double& temperature)
+/*
+* void print_wind_chill_table()
+* -----------------------------
+* this function is responsibly for supplying the temperature and wind speed to the calculating_wind_chill() function
+* by using loops, it will provide the same temperture values for each of the wind_speed values in the table
+*/
+void print_wind_chill_table()
 {
-    wind_to_the_Nth_pow(wind_s);
-    return 35.74 + (0.6215 * temperature) - (35.75 * wind_s) + (0.4275 * temperature * wind_s);
-}
-
-void error(std::string msg)
-{
-    std::cerr << msg << "\n";
-    exit(EXIT_FAILURE);
+	for (int wind_speed = 5; wind_speed <= 60; wind_speed += 5)
+	{
+		if (wind_speed == 5) std::cout << wind_speed << std::setw(9);
+		else
+			std::cout << wind_speed << std::setw(8);
+		for (int temp = 40; temp >= -45; temp -= 5)
+		{
+			std::cout << calulating_wind_chill(wind_speed, temp);
+			if (temp == -45)
+				std::cout << '\n';
+			else
+				std::cout << std::setw(6);
+		}
+	}
 }
