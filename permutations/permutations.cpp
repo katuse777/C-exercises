@@ -17,12 +17,41 @@ without calling the fact function.
 #include <iostream>
 
 //FUNCTION PROTOTYPES
+int permutations(int n, int k);
 
 
+
+int n, k;
+//MAIN FUNCTION
 int main()
 {
-
+    std::cout << "This program determines the number of ways you can choose k values\
+     from a set of n elements when the order does matter.\n\n";
+    std::cout << "How many elements are in the set\n n: ";
+    std::cin >> n;
+    std::cout << "How many values do you choose from this set\n k: ";
+    std::cin >> k;
+    std::cout << permutations(n,k);
 
     system("pause>0");
     return 0;
+}
+
+/*permutations(int n,int k)
+  -------------------------
+  this function is a more efficient version of: P(n,k) = n!/(n - k)!,
+  this function uses the value of k determine how many numbers should the factorial
+  of n, contain.
+  for example, if n = 52 and k = 2, this function will determine that the factorial of n
+  should contain 2 numbers... therefore n! = 52 x 51 = 2652 and this is the very same answer
+  you would get if you used: P(n,k) = n!/(n - k)! 
+*/
+
+int permutations(int n,int k)
+{
+    for (int i = 1; i < k; ++i)
+    {
+        n = n * (n - 1);
+    }
+    return n;
 }
