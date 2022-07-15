@@ -26,11 +26,11 @@ bool leap_year(int year);
 
 
 
-/*int days_in_month(int year, int month)
+/*int days_in_month(int year, MONTH month)
   --------------------------------------
   takes in a year and a month, if the year passed in is a leap year and returns the number of days
   that month should have
 */
-int days_in_month(int year, int month);
+int days_in_month(int year, MONTH month);
 
 #endif
