@@ -5,11 +5,13 @@
 
 #include <iostream>
 #include <string>
-#include <cctype>
+#include <iomanip>
 
 //FUNCTION PROTOTYPES
 void find_suffix(std::string str, std::string suffix);
+bool ends_with(bool);
 
+bool ends_with_suffix;
 
 //MAIN FUNCTION
 int main()
@@ -20,6 +22,8 @@ int main()
     std::cout << "Enter and what does you string end with? ";
     getline(std::cin, user_suffix);
     find_suffix(user_string, user_suffix);
+    std::cout << std::boolalpha;
+    std::cout << ends_with(ends_with_suffix);
     system("pause>0");
     return 0;
 }
@@ -37,11 +41,11 @@ void find_suffix(std::string str, std::string suffix)
     int suffix_len = suffix.length();      //how long is the suffix
     int starting_index = str.length() - suffix_len;   // the starting position of the substr function
     std::string str_suffix = str.substr(starting_index, suffix_len);
-    if (str_suffix == suffix)
-        std::cout << "The string does end with the suffix\n";
-    else 
-        std::cout << "No it does not\n";    
+    if (str_suffix == suffix)  ends_with_suffix = true;
+    else    ends_with_suffix = false;
+}
 
-    std::cout << str_suffix << std::endl;
-    std::cout << suffix << std::endl;    
+bool ends_with(bool ends_with)
+{
+    return ends_with;
 }
