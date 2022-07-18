@@ -39,6 +39,13 @@ std::string trim(std::string str)
     return str;
 }
 
+/*void trim_whitespace_before_first_ch(std::string & string)
+  ----------------------------------------------------------
+  this function keeps track of the number of whitespaces at the beginning of the string and
+  those numbers will be used to set the position and number of characters to erase when they 
+  are used in the trim() function
+*/
+
 void trim_whitespace_before_first_ch(std::string & string)
 {
     for (int i = 0; i < string.length(); i++)
@@ -60,14 +67,5 @@ void trim_whitespace_before_first_ch(std::string & string)
 
 void trim_whitespace_after_last_ch(std::string & string)
 {
-    for (int i = 0; i < string.length(); i++)
-    {
-        if (isspace(string[i]))
-        {
-            ++num_of_whitespace_after_last_ch;
-            if (num_of_whitespace_after_last_ch == 2)
-                string.erase(string[i], 1);
-        }
-        else     num_of_whitespace_after_last_ch = 0;
-    }
+    
 }
