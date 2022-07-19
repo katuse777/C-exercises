@@ -14,9 +14,9 @@ void trim_whitespace_after_last_ch(std::string & string);
 
 int index_of_first_white_space;
 int index_of_last_ch;
-int num_of_whitespace_before_ch1;
-bool found_first_ch;
-int num_of_whitespace_after_last_ch;
+int num_of_whitespace_before_ch1 = 0;
+bool found_first_ch = false;
+int num_of_whitespace_after_last_ch = 0;
 std::string words;
 
 
@@ -25,7 +25,7 @@ int main()
 {
     std::cout << "Enter a string: ";
     getline(std::cin, words);
-    std::cout << trim(words);
+    std::cout << words  << '\n';
 
     system("pause>0");
     return 0;
@@ -64,8 +64,23 @@ void trim_whitespace_before_first_ch(std::string & string)
     }
 }
 
+/*void trim_whitespace_after_last_ch(std::string & str)
+  -----------------------------------------------------
+  this function removes the whitespace after the last letter, by creating a new string
+  that has the same length as the user_string but this new string is composed of whitespaces
+  these two strings are compared to each other and on each iteration the lengths decrease as
+  the check moves closer to the end of the string and if at any point the two strings are equal
+  to each other, meaning that the user_string is left with whitespaces only, the function will
+  erase the remaining whitespace
+*/
 
-void trim_whitespace_after_last_ch(std::string & string)
+void trim_whitespace_after_last_ch(std::string & str)
 {
-    
+    for (int i = 0; i < str.length(); i++)
+    {
+        if (std::string(str.length() - i, ' ') == str.substr(i, str.length() - i))
+        {
+            str.erase(i, str.length());
+        }
+    }
 }
