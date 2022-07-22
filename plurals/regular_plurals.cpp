@@ -18,7 +18,7 @@ bool preceded_by_consonant(std::string word);
 //MAIN FUNCTION
 int main()
 {
-  std::cout << create_regular_plural("fry") << '\n';
+  std::cout << create_regular_plural("hike") << '\n';
 
   system("pause>0");
   return 0;
@@ -26,8 +26,10 @@ int main()
 
 std::string create_regular_plural(std::string word)
 {
+  std::string last_two_ch = word.substr(word.length() - 2, 2);
   char last_char = word[word.length() - 1];
-  if (last_char == 's' || last_char == 'x' || last_char == 'z')
+  if (last_char == 's' || last_char == 'x' || last_char == 'z' ||
+   last_two_ch == "ch" ||last_two_ch == "sh")
   {
     word += "es";
   }
@@ -36,6 +38,11 @@ std::string create_regular_plural(std::string word)
     word.erase(word.length() - 1, 1);
     word.insert(word.length(), "ies");
   }
+  else
+  {
+    word += 's';
+  }
+
   return word;
 }
 
