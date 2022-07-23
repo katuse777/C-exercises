@@ -15,6 +15,7 @@
 
 //FUNCTION PROTOTYPES
 std::string extract_words(std::string str);
+std::string extract_words(std::string str);
 std::string to_pig_latin(std::string str);
 std::string consonants_until_first_vowel(std::string & str);
 bool contains_no_vowels(std::string str);
@@ -22,16 +23,47 @@ bool begins_with_consonant(std::string str);
 bool begins_with_vowel(std::string str);
 bool is_consonant(char ch);
 
-std::string word = "pig";
+
+
+std::string word = "latin";
 std::string vowels = "aeiou";
 //MAIN FUNCTION
 int main()
 {
-    std::cout << consonants_until_first_vowel(word);
+    std::cout << extract_words("this is pig latin");
 
     system("pause>0");
     return 0;
 }
+
+/*std::string extract_words(std::string str)
+  ------------------------------------------
+  this function takes in a string and breaks that string up into individual words
+  and passes each word to the to_pig_latin() function and adds the return value
+  which is the word passed in as an argument in pig_latin to a new string
+*/
+
+std::string extract_words(std::string str)
+{
+    std::string word = "";
+    std::string pig_latin = "";
+    for (int i = 0; i < str.length(); i++)
+    {
+        if (isalpha(str[i]))
+        {
+            word += str[i];
+        }
+        else if (!isalpha(str[i]))
+        {
+            std::cout << word << " " << '\n';
+            pig_latin += to_pig_latin(word) + " ";
+            word = "";
+        }
+    }
+    pig_latin += to_pig_latin(word) + " ";
+    return pig_latin;
+}
+
 
 
 
@@ -107,7 +139,13 @@ bool begins_with_consonant(std::string str)
 /*std::string consonants_until_first_vowel(std::string str)
   ---------------------------------------------------------
   this function will extract all the consonants before the first vowel in the string
-  provided the string begins with a consonant
+  provided the string begins with a consonant and will delete those consonants from that word
+  not just locally but all out through the program after this function has been called
+  for example:
+    std::string word = "this";
+    consonants_until_first_vowel(word);
+  the function will return "th" and the value of word will be, "is"  
+
 */
 std::string consonants_until_first_vowel(std::string & str)
 {
