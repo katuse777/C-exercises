@@ -14,13 +14,42 @@
 
 
 //FUNCTION PROTOTYPES
+bool is_vowel(char ch);
+bool consecutive_vowels(std::string word);
 
 
+std::string vowels = "aeiou";
 //MAIN FUNCTION
 int main()
 {
-
+    std::cout << consecutive_vowels("yes");
 
     system("pause>0");
     return 0;
+}
+
+bool is_vowel(char ch)
+{
+    for (int i = 0; i < vowels.length(); i++)
+    {
+        if (ch == vowels[i])
+            return true;
+    }
+    return false;
+}
+
+bool consecutive_vowels(std::string word)
+{
+    int num_of_vowels_in_a_row = 0;
+    for (int i = 0; i < word.length(); i++)
+    {
+        if (is_vowel(word[i]))
+            ++num_of_vowels_in_a_row;
+        else
+            num_of_vowels_in_a_row = 0;
+
+        if (num_of_vowels_in_a_row == 2)
+            return true;         
+    }
+    return false;
 }
