@@ -30,7 +30,7 @@ std::string vowels = "aeiou";
 //MAIN FUNCTION
 int main()
 {
-    std::cout << extract_words("this is pig latin");
+    std::cout << extract_words("This is Pig Latin");
 
     system("pause>0");
     return 0;
@@ -39,10 +39,9 @@ int main()
 /*std::string extract_words(std::string str)
   ------------------------------------------
   this function takes in a string and breaks that string up into individual words
-  and passes each word to the to_pig_latin() function and adds the return value
+  and passes each word to the to_pig_latin() function and adds the return value,
   which is the word passed in as an argument in pig_latin to a new string
 */
-
 std::string extract_words(std::string str)
 {
     std::string word = "";
@@ -55,7 +54,6 @@ std::string extract_words(std::string str)
         }
         else if (!isalpha(str[i]))
         {
-            std::cout << word << " " << '\n';
             pig_latin += to_pig_latin(word) + " ";
             word = "";
         }
@@ -63,8 +61,6 @@ std::string extract_words(std::string str)
     pig_latin += to_pig_latin(word) + " ";
     return pig_latin;
 }
-
-
 
 
 /*std::string to_pig_latin(std::string str)
@@ -85,7 +81,9 @@ std::string to_pig_latin(std::string word)
     }
     else if (begins_with_consonant(word))
     {
+        if (isupper(word[0]))    word[0] = tolower(word[0]);
         std::string consonants_at_end = consonants_until_first_vowel(word);
+        word[0] = toupper(word[0]);
         pig_latin += word + consonants_at_end + "ay";
     }
     return pig_latin;
@@ -145,7 +143,6 @@ bool begins_with_consonant(std::string str)
     std::string word = "this";
     consonants_until_first_vowel(word);
   the function will return "th" and the value of word will be, "is"  
-
 */
 std::string consonants_until_first_vowel(std::string & str)
 {
