@@ -24,9 +24,7 @@ int main()
 	std::cout << "This program encodes a message using Caesar's Cipher.\n"
 		"Enter the number of character positions to shift: ";
 	std::cin >> shift_val;
-	std::cout << "Enter a message: ";
-    std::getline(std::cin, user_string);
-	std::cout << encode_caesar_cipher(user_string, shift_val);
+	std::cout << encode_caesar_cipher("IBM 9000", shift_val);
 
 	system("pause>0");
 	return 0;
@@ -89,5 +87,6 @@ char shift_characters(char ch, int shift)
 
 		}
 	}
+	else return ch;
 	return shifted_char;
 }
