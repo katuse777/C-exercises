@@ -28,14 +28,25 @@
 
 
 //FUNCTION PROTOTYPES
-
+void print_trig_table();
 
 
 //MAIN FUNCTION
 int main()
 {
-
-
-
+    std::cout << std::setw(10) << "TrigTable\n";
+    print_trig_table();
     return 0;
+}
+
+void print_trig_table()
+{
+    std::cout << "thetha  |  sin(theta)  |  cos(theta)  |\n";
+    std::cout << std::fixed << std::setprecision(7) << std::right;
+    std::cout << "--------+--------------+--------------+\n";
+    for (int i = -90; i <= 90; i+= 15)
+    {
+        std::cout << std::setw(8) << i << '|' << std::setw(14) 
+        << std::sin(i) << '|' << std::setw(14) << std::cos(i) << '|' << std::endl;
+    }
 }
