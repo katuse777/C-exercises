@@ -13,15 +13,42 @@
 #include <string>
 
 //FUNCTION PROTOTYPES
-
-
+std::string get_root(std::string filename);
+std::string get_extension(std::string filename);
 
 
 //MAIN FUNCTION
 int main()
 {
-
-
+    std::cout << get_root("my_file.txt") << std::endl;
 
     return 0;
+}
+
+
+std::string get_root(std::string filename)
+{
+    std::string root = "";
+    int i = 0;
+    for (int i = 0; i < filename.length(); i++)
+    {
+        if (filename[i] != '.')    root += filename[i];
+        else    break;    
+    }
+    return root;
+}
+
+std::string get_extension(std::string filename)
+{
+    std::string extension = ".";
+    int i = 0;
+    bool looking_for_extension = false;
+    for (int i = 0; i < filename.length(); i++)
+    {
+        if (filename[i] == '.')
+            looking_for_extension = true;
+        else if (looking_for_extension)
+            extension += filename[i];
+    }
+    return extension;
 }
