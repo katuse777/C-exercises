@@ -15,6 +15,9 @@ void get_file_from_user();
 int num_of_lines();
 int num_of_chars();
 void file_summary();
+void open_file(std::string filename);
+
+
 
 
 std::ifstream fin;
@@ -26,6 +29,15 @@ int main()
     file_summary();
 
     return 0;
+}
+void open_file(std::string filename)
+{
+    fin.open(filename.c_str());
+    if (fin.fail())
+    {
+        std::cout << "ERROR: Could not open file " << filename << std::endl;
+        std::cout << "Make sure the file exists and if it does, make sure you closed it before trying to open it." << std::endl;
+    }
 }
 
 void get_file_from_user()
@@ -54,14 +66,13 @@ int num_of_lines()
 
 int num_of_chars()
 {
-    fin.open(filename.c_str());
+    open_file(filename.c_str());
     int ch;
     int chars_counted = 0;
     while (true)
     {
         ch = fin.get();
         if (ch == EOF)    break;
-        else if (ch == '\n') continue;
         else  ++chars_counted;
     }
     fin.close();
@@ -70,7 +81,7 @@ int num_of_chars()
 
 int num_of_words()
 {
-    fin.open(filename.c_str());
+   open_file(filename.c_str());
    int ch;
    int words_counted = 0;
    bool ignore_chars = false;
@@ -78,8 +89,7 @@ int num_of_words()
    {
         ch = fin.get();
         if (ch == EOF) break;
-        else if (ch == '\n')  continue;
-        else if (isalnum(ch) && ignore_chars == false)
+        else if (!isspace(ch) && ignore_chars == false)
         {
             ++words_counted;
             ignore_chars = true;
