@@ -17,10 +17,15 @@ std::string get_root(std::string filename);
 std::string get_extension(std::string filename);
 
 
+
+std::string filename;
 //MAIN FUNCTION
 int main()
 {
-    std::cout << get_root("my_file.txt") << std::endl;
+    std::cout << "Enter a filename and I'll return the root of the file and the file extension: " << filename << std::endl;
+    getline(std::cin, filename);
+    std::cout << "Root: " << get_root(filename.c_str()) << std::endl;
+    std::cout << "Extension: " << get_extension(filename.c_str()) << std::endl;
 
     return 0;
 }
