@@ -33,16 +33,17 @@ int main()
 {
     srand(time(NULL));
     get_file_from_user();
-    char ch = 65;
-    for (int i = 0; i < 100; i++)
-    {
-        std::cout << random_num_in_range(65, 90) << std::endl;
-        ch++;
-    }
-
+    char ch;
+    std::cout << greek_text() << std::endl;
     return 0;
 }
 
+/*void get_file_from_user()
+  -------------------------
+  this function will ask the user to enter the name of a file for reading
+  and will open that file but if the the file can't be opened, the user will be
+  notified and asked to enter a valid file name 
+*/
 void get_file_from_user()
 {
     std::cout << "Enter the name of the file: \n";
@@ -58,26 +59,50 @@ void get_file_from_user()
     } while (fin.fail());
 }
 
+/*int random_num_in_range(int min, int max)
+  -----------------------------------------
+  this function takes in two arguments, min will be the lowest and max will be the highest
+  this means the number returned must be (min <= num <= max). 
+
+*/
 int random_num_in_range(int min, int max)
 {
     int random_num;
-    random_num = (rand() % max) + min;
-    if (random_num > max)   random_num -= min;
+    random_num = (rand() % (max - min)) + min;
     return random_num;
 }
 
+
+/*char random_upper_letters(char ch)
+  ----------------------------------
+  this function takes in a alphabet named ch and returns it as a random alphabet that 
+  has the same case as ch, e.g a uppercase letter will return a random letter uppercase
+  letter
+*/
 char random_upper_letters(char ch)
 {
     ch = random_num_in_range(65, 90);
     return ch;
 }
 
+
+/*char random_upper_letters(char ch)
+  ----------------------------------
+  this function takes in a alphabet named ch and returns it as a random alphabet that 
+  has the same case as ch, e.g a lower letter will return a random letter lowercase
+  letter
+*/
 char random_lower_letters(char ch)
 {
     ch = random_num_in_range(97, 122);
     return ch;
 }
 
+
+/*char get_chars_from_file()
+  -------------------------
+  this function gets the next character from the file and returns it as it is
+*/
 char get_chars_from_file()
 {
     char ch;
@@ -85,6 +110,14 @@ char get_chars_from_file()
     return ch;
 }
 
+
+/*std::string greek_text()
+  ------------------------
+  this function calls the get_chars_from_file() functions and passes each of those charcters
+  through the random_letters() functions depending on whether the character is upper or lower case
+  and after changing the character (if it's a alphabetic character), the character is
+  added to a string and when the end of the file is reached the file is then closed 
+*/
 std::string greek_text()
 {
     char original_char;
