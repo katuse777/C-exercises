@@ -15,7 +15,8 @@ void get_input_file_from_user();
 std::string letter_to_abolish(std::string letters);
 std::string get_input_file_strings();
 bool is_same_as_abolish_char(char ch,std::string abolish_chars);
-
+void open_output_file();
+void write_to_output_file();
 
 
 //GLOBAL VARIABLE DECLERATIONS
@@ -27,9 +28,7 @@ std::string output_filename;
 //MAIN FUNCTION
 int main()
 {
-    get_input_file_from_user();
-    std::cout << get_input_file_strings();
-
+    write_to_output_file();
 
     return 0;
 }
@@ -65,6 +64,7 @@ std::string get_input_file_strings()
         if (is_same_as_abolish_char(ch, abolish))  continue;
         else new_string += ch;
     } while ( true);
+    fin.close();
     return new_string;
 }
 
@@ -82,4 +82,30 @@ bool is_same_as_abolish_char(char ch,std::string abolish_chars)
         }
     }
     return false;
+}
+
+void open_output_file()
+{
+    do
+    {
+        std::cout << "Enter the name of the file you want to write to: ";
+        getline(std::cin, output_filename);
+        fout.open(output_filename.c_str());
+        if (fout.fail())    std::cout << "Failed to open " << output_filename << std::endl;
+    } while (fout.fail());
+}
+
+void write_to_output_file()
+{
+    std::string input_file_strings;
+    char ch;
+    get_input_file_from_user();
+    open_output_file();
+    input_file_strings = get_input_file_strings();
+    for (int i = 0; i < input_file_strings.length(); i++)
+    {
+        ch = input_file_strings[i];
+        fout.put(ch);
+    }
+    fout.close();
 }
