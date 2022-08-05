@@ -1,4 +1,29 @@
-This is my input file //This is my file for input
-Since this is /*My input file, I'll just leave this empty*/
-is a party /*Let's have fun y'all
-you know hahaha, */ Yep /* another comment block*/
+/*Write a function
+  void removeComments(istream & is, ostream & os);
+  that copies characters from the input stream is to the output stream os, except
+  for characters that appear inside C++ comments. Your implementation should
+  recognize both comment conventions:
+  • Any text beginning with / * and ending with * /, possibly many lines later.
+  • Any text beginning with //and extending through the end of the line
+*/
+
+#include <iostream>
+#include <string>
+#include <istream>
+#include <ostream>
+#include <fstream>
+
+//FUNCTION PROTOTYPES
+void remove_comments(std::istream & is, std::ostream & os);
+
+//GLOBAL VARIABLE DECLERATIONS
+std::ifstream fin("input.txt");
+
+
+//MAIN FUNCTION
+int main()
+{
+  remove_comments(fin, std::cout);
+
+  return 0;
+}

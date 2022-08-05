@@ -15,12 +15,8 @@
 
 //FUNCTION PROTOTYPES
 void remove_comments(std::istream & is, std::ostream & os);
-bool is_line_comment(std::string str);
-bool is_block_comment(std::string str);
-
 
 //GLOBAL VARIABLE DECLERATIONS
-bool inside_block_comment = false;
 std::ifstream fin("input.txt");
 
 
@@ -29,82 +25,65 @@ int main()
 {
   remove_comments(fin, std::cout);
 
-
   return 0;
 }
 
 
+/*void remove_comments(std::istream & is, std::ostream & os)
+  ----------------------------------------------------------
+  this funtion will get all the characters from the input stream named is and store
+  them in the string variable named str, then it will loop through that string
+  taking each character one by one, putting it in the output stream 
+  and if the current character is a forward slash and the following character is
+  also a forward slash then the function will ignore all the characters from the input stream
+  until a '\n' character is encountered then the function will carry on putting characters
+  after the forward slash
+  into the output stream but if the current character is a forward slash and the following character
+  is a asterisk then the function will ignore all the characters from the input stream until
+  a asterisk follwed by a forward slash is encountered then the function will continue putting 
+  the characters after the forward slash into the output stream
+*/
 void remove_comments(std::istream & is, std::ostream & os)
 {
   char ch;
-  std::string one_line = "";
   std::string str = "";
   while (true)
   {
-    ch = is.get();  
-    if (ch == EOF || is.fail()) break;
-    one_line += ch;
-    if (ch == '\n' && inside_block_comment == false)
-    {
-      if (is_line_comment(one_line))
-      {
-        for (int i = 0; i < one_line.length(); i++)
-        {
-          if (one_line[i] == '/' && one_line[i + 1] == '/')  break;
-          str += one_line[i];
-        }
-      }
-      else if (is_block_comment(one_line))
-      {
-        for (int i = 0; i < one_line.length(); i++)
-        {
-          if (one_line[i] == '/' && one_line[i + 1] == '*')
-          {
-            inside_block_comment = true;
-            break;
-          }
-          else  str += one_line[i];
-        }
-      }
-    }
-    else if (ch == '\n' && inside_block_comment)
-    {
-      for (int i = 0; i < one_line.length(); i++)
-      {
-        if (one_line[i] == '*' && one_line[i + 1] == '/')
-          inside_block_comment = false;
-      }
-    }
-    
-    
-    if (ch == '\n')
-      one_line = "";
+    ch = is.get();
+    if (ch == EOF || is.fail())  break;
+    str += ch;
   }
 
-  for (int i = 0; i < str.length(); i++)
-  {
-    os.put(str[i]);
-  }
-}
-
-
-bool is_line_comment(std::string str)
-{
   for (int i = 0; i < str.length(); i++)
   {
     if (str[i] == '/' && str[i + 1] == '/')
-      return true;
-  }
-  return false;
-}
+    {
+      while (true)
+      {
+        int j = i;
+        if (str[j] == '\n')  break;
+        j++;
+        i++;
+        continue;
+      }
+    }
+    else if (str[i] == '/' && str[i + 1] == '*')
+    {
+      int j = i;
+      while (true)
+      {
+        if (str[j] == '/' && str[j - 1] == '*')
+        {
+          i++;
+          break;
+        }  
+        j++;
+        i++;
+        continue;
+      }
+    }
 
-bool is_block_comment(std::string str)
-{
-  for (int i = 0; i < str.length(); i++)
-  {
-    if (str[i] == '/' && str[i + 1] == '*')
-      return true;
+    os.put(str[i]);
   }
-  return false;
+  
 }
-
