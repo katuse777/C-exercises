@@ -1,0 +1,4 @@
+This is my input file //This is my file for input
+Since this is /*My input file, I'll just leave this empty*/
+is a party /*Let's have fun y'all
+you know hahaha, */ Yep /* another comment block*/
