@@ -48,6 +48,6 @@ void add_values_to_vector(std::vector<double> & data)
 {
     for (int i = 0; i < 150; i+= 7)
     {
-        data.push_back(50);
+        data.push_back(i);
     }
 }
