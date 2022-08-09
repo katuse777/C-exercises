@@ -1,0 +1,43 @@
+Functions
+__________________________________________________________________________________________________________
+Name	        |Description
+___________________________________________________________________________________________________________
+my_vector.assign()	        |Erases a vector and copies the specified elements to the empty vector.
+my_vector.at(pos)           |Returns a reference to the element at a specified location in the vector.
+my_vector.back()	        |Returns a reference to the last element of the vector.
+my_vector.begin()	        |Returns a random-access iterator to the first element in the vector.
+my_vector.capacity()	    |Returns the number of elements that the vector could contain without allocating more storage.
+my_vector.cbegin()	        |Returns a random-access const iterator to the first element in the vector.
+my_vector.cend()	        |Returns a random-access const iterator that points just beyond the end of the vector.
+my_vector.crbegin()	        |Returns a const iterator to the first element in a reversed vector.
+my_vector.crend()	        |Returns a const iterator to the end of a reversed vector.
+my_vector.clear()	        |Erases the elements of the vector.
+my_vector.data()	        |Returns a pointer to the first element in the vector.
+my_vector.emplace()	        |Inserts an element constructed in place into the vector at a specified position.
+my_vector.emplace_back()	|Adds an element constructed in place to the end of the vector.
+my_vector.empty()	        |Tests if the vector container is empty.
+my_vector.end()	            |Returns a random-access iterator that points to the end of the vector.
+my_vector.erase()	        |Removes an element or a range of elements in a vector from specified positions.
+my_vector.front()	        |Returns a reference to the first element in a vector.
+my_vector.get_allocator()	|Returns an object to the allocator class used by a vector.
+my_vector.insert()	        |Inserts an element or many elements into the vector at a specified position.
+my_vector.max_size()	    |Returns the maximum length of the vector.
+my_vector.pop_back()	    |Deletes the element at the end of the vector.
+my_vector.push_back(value)  |Add an element to the end of the vector.
+my_vector.rbegin()	        |Returns an iterator to the first element in a reversed vector.
+my_vector.rend()	        |Returns an iterator to the end of a reversed vector.
+my_vector.reserve()	        |Reserves a minimum length of storage for a vector object.
+my_vector.resize()	        |Specifies a new size for a vector.
+my_vector.shrink_to_fit()	|Discards excess capacity.
+my_vector.size()	        |Returns the number of elements in the vector.
+my_vector.swap()	        |Exchanges the elements of two vectors.
+_________________________________________________________________________________________________________________
+
+
+Operators
+_______________________________________________________________________________
+Name	    |Description
+_______________________________________________________________________________
+operator[]	|Returns a reference to the vector element at a specified position.
+operator=	|Replaces the elements of the vector with a copy of another vector.
+________________________________________________________________________________
