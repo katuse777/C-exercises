@@ -1,0 +1,11 @@
+Functions
+___________________________________________________________________________________________________________________________________________________________________________
+Name	Description
+___________________________________________________________________________________________________________________________________________________________________________
+back	Returns a reference to the last and most recently added element at the back of the queue.
+empty	Tests if the queue is empty.
+front	Returns a reference to the first element at the front of the queue.
+pop	Removes an element from the front of the queue.
+push	Adds an element to the back of the queue.
+size	Returns the number of elements in the queue.
+___________________________________________________________________________________________________________________________________________________________________________

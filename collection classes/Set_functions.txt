@@ -1,0 +1,38 @@
+Functions
+___________________________________________________________________________________________________________________________________________________________________________
+Name	        Description
+___________________________________________________________________________________________________________________________________________________________________________
+begin	        Returns an iterator that addresses the first element in the set.
+cbegin      	Returns a const iterator that addresses the first element in the set.
+cend	        Returns a const iterator that addresses the location succeeding the last element in a set.
+clear	        Erases all the elements of a set.
+containsC++20	Check if there's an element with the specified key in the set.
+count	        Returns the number of elements in a set whose key matches a parameter-specified key.
+crbegin	        Returns a const iterator addressing the first element in a reversed set.
+crend	        Returns a const iterator that addresses the location succeeding the last element in a reversed set.
+emplace	        Inserts an element constructed in place into a set.
+emplace_hint	Inserts an element constructed in place into a set, with a placement hint.
+empty	        Tests if a set is empty.
+end	            Returns an iterator that addresses the location succeeding the last element in a set.
+equal_range	    Returns a pair of iterators respectively to the first element in a set with a key that is greater than a specified key and to the first element in      the set with a key that is equal to or greater than the key.
+erase	        Removes an element or a range of elements in a set from specified positions or removes elements that match a specified key.
+find	        Returns an iterator addressing the location of an element in a set that has a key equivalent to a specified key.
+get_allocator	Returns a copy of the allocator object used to construct the set.
+insert	        Inserts an element or a range of elements into a set.
+key_comp	    Retrieves a copy of the comparison object used to order keys in a set.
+lower_bound	    Returns an iterator to the first element in a set with a key that is equal to or greater than a specified key.
+max_size	    Returns the maximum length of the set.
+rbegin	        Returns an iterator addressing the first element in a reversed set.
+rend	        Returns an iterator that addresses the location succeeding the last element in a reversed set.
+size	        Returns the number of elements in the set.
+swap	        Exchanges the elements of two sets.
+upper_bound	    Returns an iterator to the first element in a set with a key that is greater than a specified key.
+value_comp	    Retrieves a copy of the comparison object used to order element values in a set.
+___________________________________________________________________________________________________________________________________________________________________________
+
+Operators
+___________________________________________________________________________________________________________________________________________________________________________
+Name	Description
+___________________________________________________________________________________________________________________________________________________________________________
+operator=	Replaces the elements of a set with a copy of another set.
+___________________________________________________________________________________________________________________________________________________________________________
