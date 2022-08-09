@@ -3,6 +3,7 @@
     "files.associations": {
         "xstring": "cpp",
         "istream": "cpp",
-        "cstdlib": "cpp"
+        "cstdlib": "cpp",
+        "vector": "cpp"
     }
 }

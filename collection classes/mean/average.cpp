@@ -14,13 +14,40 @@
 
 
 //FUNCTION PROTOTYPES
+double mean(std::vector<double> data);
+void add_values_to_vector(std::vector<double> & data);
 
+
+
+//GLOBAL VARIABLE DECLERATIONS
+std::vector<double> data;
 
 
 //MAIN FUNCTION
 int main()
 {
+    add_values_to_vector(data);
+    std::cout << mean(data);
 
 
     return 0;
+}
+
+double mean(std::vector<double> data)
+{
+    double average = 0.0;
+    for (int i = 0; i < data.size(); i++)
+    {
+        average += data[i];
+    }
+    average /= data.size();
+    return average;
+}
+
+void add_values_to_vector(std::vector<double> & data)
+{
+    for (int i = 0; i < 150; i+= 7)
+    {
+        data.push_back(50);
+    }
 }
